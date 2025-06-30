@@ -39,8 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
+    'corsheaders',
     'accounts',
+    'products',  # Add this line
 ]
+
+# Add these settings for media files if not already present
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # adding rest frame work config
 REST_FRAMEWORK = {
@@ -164,10 +170,12 @@ SIMPLE_JWT = {
 }
 
 # Configure CORS
-INSTALLED_APPS += ['corsheaders']
-MIDDLEWARE.insert(2, 'corsheaders.middleware.CorsMiddleware')
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # OUR React app's URL
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
+
+# settings for media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

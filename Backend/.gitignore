@@ -1,2 +1,35 @@
-venv
+# Python virtual environment
+venv/
 
+# Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Database
+*.sqlite3
+*.sqlite
+
+# Django media and static files
+media/
+static/
+
+# Environment variables
+.env
+.env.local
+
+# IDE specific files
+.idea/
+.vscode/
+
+# Testing and coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Logs
+*.log
+
+# macOS files
+.DS_Store

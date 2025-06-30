@@ -1,0 +1,17 @@
+API Endpoints:
+1) Authentication:
+
+- POST /api/auth/register/ - Register a new user
+- POST /api/auth/login/ - Login with JWT token
+- POST /api/auth/token/refresh/ - Refresh JWT token
+- GET /api/auth/profile/ - Get user profile (authenticated)
+
+
+2)Products
+
+- GET /api/products/ - List all products
+- POST /api/products/ - Create a new product
+- GET /api/products/{id}/ - Retrieve a product
+- PUT /api/products/{id}/ - Update a product
+- DELETE /api/products/{id}/ - Delete a product
+- DELETE /api/products/{id}/remove_image/ - Remove a specific image
