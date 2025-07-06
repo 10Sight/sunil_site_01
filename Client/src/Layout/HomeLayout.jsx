@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Slider from "../components/Slider";
 import CardSlider from "../components/CardSlider";
 import CarbideInsertSlider from "../components/CarbidInsertSlider";
+import FaqSection from "../components/FAQ/FaqSection";
 
 const HomeLayout = ({ children }) => {
   return (
@@ -41,6 +42,10 @@ const HomeLayout = ({ children }) => {
               alt="Promotional Spin Wheel"
               className="w-full max-w-6xl mx-auto rounded-lg shadow-md object-contain"
             />
+          </div>
+          {/* FAQ Section */}
+          <div className="min-h-screen bg-gray-50">
+            <FaqSection />
           </div>
         </section>
       </div>
