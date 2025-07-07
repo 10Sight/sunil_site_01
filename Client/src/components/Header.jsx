@@ -1,5 +1,11 @@
 import { useState, useRef } from "react";
-import { FaUser, FaShoppingCart, FaPhone } from "react-icons/fa";
+import {
+  FaUser,
+  FaShoppingCart,
+  FaPhone,
+  FaChevronDown,
+  FaChevronUp,
+} from "react-icons/fa";
 import { HiMenu, HiX } from "react-icons/hi";
 
 import SearchBar from "./SearchBar";
@@ -45,28 +51,35 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex justify-between items-center mt-4 text-sm">
           <div className="flex space-x-6 font-semibold">
-            {/* Only this div triggers mega menu */}
+            {/* Shop with MegaMenu */}
             <div className="relative">
               <div
                 onMouseEnter={() => {
-                  clearTimeout(hoverTimeout.current); // cancel hide
+                  clearTimeout(hoverTimeout.current);
                   setShowMega(true);
                 }}
                 onMouseLeave={() => {
                   hoverTimeout.current = setTimeout(() => {
                     setShowMega(false);
-                  }, 150); // 150ms delay
+                  }, 150);
                 }}
               >
-                <button className="text-black cursor-pointer">Shop</button>
+                <button className="flex items-center space-x-1 text-black cursor-pointer">
+                  <span>Shop</span>
+                  {showMega ? (
+                    <FaChevronUp className="text-xs mt-0.5" />
+                  ) : (
+                    <FaChevronDown className="text-xs mt-0.5" />
+                  )}
+                </button>
 
                 <div
-                  className={`absolute left-[-15px] top-full mt-3 w-[1300px] bg-white shadow-xl z-[9999] border p-6 transition-all duration-300 ease-in-out
-      ${
-        showMega
-          ? "opacity-100 translate-y-0 visible pointer-events-auto"
-          : "opacity-0 -translate-y-2 invisible pointer-events-none"
-      }`}
+                  className={`absolute left-[-35px] top-full mt-3 w-[1348px] bg-white shadow-xl z-[9999] border p-6 transition-all duration-300 ease-in-out
+                    ${
+                      showMega
+                        ? "opacity-100 translate-y-0 visible pointer-events-auto"
+                        : "opacity-0 -translate-y-2 invisible pointer-events-none"
+                    }`}
                 >
                   <MegaMenu />
                 </div>
@@ -102,34 +115,16 @@ export default function Header() {
         {/* Mobile Drawer */}
         {menuOpen && (
           <div className="lg:hidden mt-4 space-y-4 bg-white p-4 border-t border-gray-200 shadow-md rounded-md">
-            <a href="#" className="block text-black">
-              Shop
-            </a>
-            <a href="#" className="block text-black">
-              Deals
-            </a>
-            <a href="#" className="block text-black">
-              Wholesale
-            </a>
-            <a href="#" className="block text-black">
-              More
-            </a>
-            <a href="#" className="block text-black">
-              Notice
-            </a>
+            <a href="#" className="block text-black">Shop</a>
+            <a href="#" className="block text-black">Deals</a>
+            <a href="#" className="block text-black">Wholesale</a>
+            <a href="#" className="block text-black">More</a>
+            <a href="#" className="block text-black">Notice</a>
             <hr />
-            <a href="#" className="block text-gray-600">
-              Delivery
-            </a>
-            <a href="#" className="block text-gray-600">
-              Track your Order
-            </a>
-            <a href="#" className="block text-gray-600">
-              About Us
-            </a>
-            <a href="#" className="block text-gray-600">
-              Contact Us
-            </a>
+            <a href="#" className="block text-gray-600">Delivery</a>
+            <a href="#" className="block text-gray-600">Track your Order</a>
+            <a href="#" className="block text-gray-600">About Us</a>
+            <a href="#" className="block text-gray-600">Contact Us</a>
             <button className="w-full flex items-center justify-center border border-orange-500 text-orange-500 rounded-full px-3 py-2 hover:bg-orange-50 transition">
               <FaPhone className="mr-2" /> Call us
             </button>

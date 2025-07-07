@@ -6,6 +6,14 @@ const faqs = [
     {
         question: "This is my first Question?",
         answer: "This is my first answer."
+    },
+    {
+        question: "This is my Second Question?",
+        answer: "This is my Second Answer."
+    },
+    {
+        question: "This is my Third Question?",
+        answer: "This is my Third Answer."
     }
 ];
 
