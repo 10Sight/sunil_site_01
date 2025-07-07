@@ -1,20 +1,17 @@
-import { useState } from "react";
-import {
-  FaUser,
-  FaShoppingCart,
-  FaPhone,
-  FaSearch,
-  FaMicrophone,
-} from "react-icons/fa";
+import { useState, useRef } from "react";
+import { FaUser, FaShoppingCart, FaPhone } from "react-icons/fa";
 import { HiMenu, HiX } from "react-icons/hi";
 
 import SearchBar from "./SearchBar";
+import MegaMenu from "./MegaMenu";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showMega, setShowMega] = useState(false);
+  const hoverTimeout = useRef(null);
 
   return (
-    <header className="w-full border-b border-gray-200 px-4 py-2 backdrop-blur-md">
+    <header className="w-full border-b border-gray-200 px-4 py-2 backdrop-blur-md z-50 relative">
       <div className="max-w-screen-xl mx-auto">
         {/* Top Row */}
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -48,12 +45,41 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex justify-between items-center mt-4 text-sm">
           <div className="flex space-x-6 font-semibold">
-            <a href="#">Shop</a>
+            {/* Only this div triggers mega menu */}
+            <div className="relative">
+              <div
+                onMouseEnter={() => {
+                  clearTimeout(hoverTimeout.current); // cancel hide
+                  setShowMega(true);
+                }}
+                onMouseLeave={() => {
+                  hoverTimeout.current = setTimeout(() => {
+                    setShowMega(false);
+                  }, 150); // 150ms delay
+                }}
+              >
+                <button className="text-black cursor-pointer">Shop</button>
+
+                <div
+                  className={`absolute left-[-15px] top-full mt-3 w-[1300px] bg-white shadow-xl z-[9999] border p-6 transition-all duration-300 ease-in-out
+      ${
+        showMega
+          ? "opacity-100 translate-y-0 visible pointer-events-auto"
+          : "opacity-0 -translate-y-2 invisible pointer-events-none"
+      }`}
+                >
+                  <MegaMenu />
+                </div>
+              </div>
+            </div>
+
+            {/* Other nav links */}
             <a href="#">Deals</a>
             <a href="#">Wholesale</a>
             <a href="#">More</a>
             <a href="#">Notice</a>
           </div>
+
           <div className="flex items-center space-x-6">
             <a href="#" className="text-gray-500 hover:text-black">
               Delivery
