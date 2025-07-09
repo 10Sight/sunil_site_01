@@ -10,12 +10,12 @@ const HomeLayout = ({ children }) => {
   return (
     <>
       {/* Announcement bar */}
-      <AnnouncementBar />
+      {/* <AnnouncementBar /> */}
 
       {/* Main container */}
       <div className="flex flex-col min-h-screen">
-        {/* Top header */}
-        <Header />
+        {/* Top header
+        <Header /> */}
 
         {/* Main banner slider */}
         <Slider />
